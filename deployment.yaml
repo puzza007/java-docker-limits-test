@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: java-test
+  labels:
+    app: java-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: java-test
+  template:
+    metadata:
+      labels:
+        app: java-test
+    spec:
+      containers:
+      - name: java-test
+        image: puzza007/java-docker-limits-test:latest
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+          limits:
+            memory: "800Mi"
+            cpu: "500m"
